@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -184,13 +183,41 @@ function SaveInfluencer (Pdata){
   
 }
 
+let data = [];
+
+
+for(let i = 0; i < UsableData.length; i++){
+
+  const userData = {
+  "Number of subscribers" :  UsableData[i].followers,
+  "followers" : UsableData[i].followers,
+  "average_likes" : UsableData[i].averageLikes,
+  "average_comments" : UsableData[i].averageComments,
+  "average_shares" : UsableData[i].averageShares,
+  "budget_per_video" : UsableData[i].Budget,
+  "engagement_rate" : UsableData[i].engagementRate,
+  "follower_growth_rate" : UsableData[i].follower_growth_rate,
+  `primary_platform_${UsableData[i]}` = 1,
+  `Targetaudience_gender_${UsableData[i].audienceGender}` = 1,
+  `product_category_${UsableData[i].productCategory}` = 1,
+  `Geographical location: state of India_${UsableData[i].state}` = 1,
+  "LL_age" = UsableData[i].audienceAge,
+  "UL_age" = 35,
+  "campaign duration_transform" = UsableData[i].Campaign_duration
+ }
+
+ data.push(userData);
+
+}
+
+
 
 
 //userSchema.plugin(findOrCreate);
 
 async function predict(){
   
-const response = await fetch('http://127.0.0.1:5000/predict_score', {method: 'POST', body: UsableData});
+const response = await fetch('http://127.0.0.1:5000/predict_score', {method: 'POST', body: data});
 const data = JSON.stringify(response);
 
 for(let i = 0; i < data.length; i++){
