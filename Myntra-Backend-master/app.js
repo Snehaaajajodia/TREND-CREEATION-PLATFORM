@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -183,27 +184,175 @@ function SaveInfluencer (Pdata){
   
 }
 
+
 let data = [];
 
 
 for(let i = 0; i < UsableData.length; i++){
 
+ if(UsableData[i].audienceGender == "Female" && UsableData[i].productCategory == "Clothing"){
+
   const userData = {
-  "Number of subscribers" :  UsableData[i].followers,
-  "followers" : UsableData[i].followers,
-  "average_likes" : UsableData[i].averageLikes,
-  "average_comments" : UsableData[i].averageComments,
-  "average_shares" : UsableData[i].averageShares,
-  "budget_per_video" : UsableData[i].Budget,
-  "engagement_rate" : UsableData[i].engagementRate,
-  "follower_growth_rate" : UsableData[i].follower_growth_rate,
-  `primary_platform_${UsableData[i]}` = 1,
-  `Targetaudience_gender_${UsableData[i].audienceGender}` = 1,
-  `product_category_${UsableData[i].productCategory}` = 1,
-  `Geographical location: state of India_${UsableData[i].state}` = 1,
-  "LL_age" = UsableData[i].audienceAge,
-  "UL_age" = 35,
-  "campaign duration_transform" = UsableData[i].Campaign_duration
+    "Number of subscribers" :  UsableData[i].followers,
+    "followers" : UsableData[i].followers,
+    "average_likes" : UsableData[i].averageLikes,
+    "average_comments" : UsableData[i].averageComments,
+    "average_shares" : UsableData[i].averageShares,
+    "budget_per_video" : UsableData[i].Budget,
+    "engagement_rate" : UsableData[i].engagementRate,
+    "follower_growth_rate" : UsableData[i].follower_growth_rate,
+    "primary_platform_Facebook": 0,
+    "primary_platform_Instagram": 0,
+    "primary_platform_YouTube": 1,
+    "Targetaudience_gender_Female": 1,
+    "Targetaudience_gender_Male": 0,
+    "Targetaudience_gender_Others": 1,
+    "product_category_Accessories": 0,
+    "product_category_Clothing": 1,
+    "product_category_Cosmetics": 0,
+    "Geographical location: state of India_Gujarat": 0,
+    "Geographical location: state of India_Kerala": 1,
+    "Geographical location: state of India_Maharashtra": 0,
+    "Geographical location: state of India_Punjab": 0,
+    "Geographical location: state of India_Rajasthan": 0,
+    "Geographical location: state of India_Sikkim": 0,
+    "Geographical location: state of India_Tamil Nadu": 0,
+    "LL_age" : UsableData[i].audienceAge,
+    "UL_age" : 35,
+    "campaign duration_transform" : UsableData[i].Campaign_duration
+   }
+    
+ } 
+ 
+ else if(UsableData[i].audienceGender == "Male" && UsableData[i].productCategory == "Accessories"){
+
+  const userData = {
+    "Number of subscribers" :  UsableData[i].followers,
+    "followers" : UsableData[i].followers,
+    "average_likes" : UsableData[i].averageLikes,
+    "average_comments" : UsableData[i].averageComments,
+    "average_shares" : UsableData[i].averageShares,
+    "budget_per_video" : UsableData[i].Budget,
+    "engagement_rate" : UsableData[i].engagementRate,
+    "follower_growth_rate" : UsableData[i].follower_growth_rate,
+    "primary_platform_Facebook": 0,
+    "primary_platform_Instagram": 0,
+    "primary_platform_YouTube": 1,
+    "Targetaudience_gender_Female": 0,
+    "Targetaudience_gender_Male": 1,
+    "Targetaudience_gender_Others": 0,
+    "product_category_Accessories": 1,
+    "product_category_Clothing": 0,
+    "product_category_Cosmetics": 0,
+    "Geographical location: state of India_Gujarat": 0,
+    "Geographical location: state of India_Kerala": 1,
+    "Geographical location: state of India_Maharashtra": 0,
+    "Geographical location: state of India_Punjab": 0,
+    "Geographical location: state of India_Rajasthan": 0,
+    "Geographical location: state of India_Sikkim": 0,
+    "Geographical location: state of India_Tamil Nadu": 0,
+    "LL_age" : UsableData[i].audienceAge,
+    "UL_age" : 35,
+    "campaign duration_transform" : UsableData[i].Campaign_duration
+   }
+ }
+
+ else if(UsableData[i].audienceGender == "Both" && UsableData[i].productCategory == "Cosmetics"){
+
+  const userData = {
+    "Number of subscribers" :  UsableData[i].followers,
+    "followers" : UsableData[i].followers,
+    "average_likes" : UsableData[i].averageLikes,
+    "average_comments" : UsableData[i].averageComments,
+    "average_shares" : UsableData[i].averageShares,
+    "budget_per_video" : UsableData[i].Budget,
+    "engagement_rate" : UsableData[i].engagementRate,
+    "follower_growth_rate" : UsableData[i].follower_growth_rate,
+    "primary_platform_Facebook": 0,
+    "primary_platform_Instagram": 0,
+    "primary_platform_YouTube": 1,
+    "Targetaudience_gender_Female": 0,
+    "Targetaudience_gender_Male": 0,
+    "Targetaudience_gender_Others": 1,
+    "product_category_Accessories": 0,
+    "product_category_Clothing": 0,
+    "product_category_Cosmetics": 1,
+    "Geographical location: state of India_Gujarat": 0,
+    "Geographical location: state of India_Kerala": 1,
+    "Geographical location: state of India_Maharashtra": 0,
+    "Geographical location: state of India_Punjab": 0,
+    "Geographical location: state of India_Rajasthan": 0,
+    "Geographical location: state of India_Sikkim": 0,
+    "Geographical location: state of India_Tamil Nadu": 0,
+    "LL_age" : UsableData[i].audienceAge,
+    "UL_age" : 35,
+    "campaign duration_transform" : UsableData[i].Campaign_duration
+   }
+ }  else if(UsableData[i].audienceGender == "Female" && UsableData[i].productCategory == "Cosmetics"){
+
+  const userData = {
+    "Number of subscribers" :  UsableData[i].followers,
+    "followers" : UsableData[i].followers,
+    "average_likes" : UsableData[i].averageLikes,
+    "average_comments" : UsableData[i].averageComments,
+    "average_shares" : UsableData[i].averageShares,
+    "budget_per_video" : UsableData[i].Budget,
+    "engagement_rate" : UsableData[i].engagementRate,
+    "follower_growth_rate" : UsableData[i].follower_growth_rate,
+    "primary_platform_Facebook": 0,
+    "primary_platform_Instagram": 0,
+    "primary_platform_YouTube": 1,
+    "Targetaudience_gender_Female": 1,
+    "Targetaudience_gender_Male": 0,
+    "Targetaudience_gender_Others": 0,
+    "product_category_Accessories": 0,
+    "product_category_Clothing": 0,
+    "product_category_Cosmetics": 1,
+    "Geographical location: state of India_Gujarat": 0,
+    "Geographical location: state of India_Kerala": 1,
+    "Geographical location: state of India_Maharashtra": 0,
+    "Geographical location: state of India_Punjab": 0,
+    "Geographical location: state of India_Rajasthan": 0,
+    "Geographical location: state of India_Sikkim": 0,
+    "Geographical location: state of India_Tamil Nadu": 0,
+    "LL_age" : UsableData[i].audienceAge,
+    "UL_age" : 35,
+    "campaign duration_transform" : UsableData[i].Campaign_duration
+   }
+ } 
+ 
+ else {
+
+  const userData = {
+    "Number of subscribers" :  UsableData[i].followers,
+    "followers" : UsableData[i].followers,
+    "average_likes" : UsableData[i].averageLikes,
+    "average_comments" : UsableData[i].averageComments,
+    "average_shares" : UsableData[i].averageShares,
+    "budget_per_video" : UsableData[i].Budget,
+    "engagement_rate" : UsableData[i].engagementRate,
+    "follower_growth_rate" : UsableData[i].follower_growth_rate,
+    "primary_platform_Facebook": 0,
+    "primary_platform_Instagram": 1,
+    "primary_platform_YouTube": 0,
+    "Targetaudience_gender_Female": 0,
+    "Targetaudience_gender_Male": 0,
+    "Targetaudience_gender_Others": 1,
+    "product_category_Accessories": 0,
+    "product_category_Clothing": 1,
+    "product_category_Cosmetics": 0,
+    "Geographical location: state of India_Gujarat": 0,
+    "Geographical location: state of India_Kerala": 1,
+    "Geographical location: state of India_Maharashtra": 0,
+    "Geographical location: state of India_Punjab": 0,
+    "Geographical location: state of India_Rajasthan": 0,
+    "Geographical location: state of India_Sikkim": 0,
+    "Geographical location: state of India_Tamil Nadu": 0,
+    "LL_age" : UsableData[i].audienceAge,
+    "UL_age" : 35,
+    "campaign duration_transform" : UsableData[i].Campaign_duration
+   }
+
  }
 
  data.push(userData);
